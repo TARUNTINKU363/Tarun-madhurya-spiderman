@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarun 💫 Madhurya</title>
+<link rel="icon" type="image/png" href="asserts/logo.png">
+<link rel="apple-touch-icon" href="asserts/logo.png">
+<style>
+:root {
+  --ink:#2e2633;
+  --soft-ink:#5f5367;
+  --wine:#8f173d;
+  --rose:#c53c67;
+  --navy:#17345f;
+  --teal:#0f8f8b;
+  --paper:rgba(255,255,255,.84);
+  --paper-strong:rgba(255,255,255,.94);
+  --line:rgba(143,23,61,.16);
+  --shadow:rgba(34,22,42,.14);
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  color:var(--ink);
+  background:#fff8fb;
+  cursor:url("asserts/spider-web-cursor.png") 12 12, auto;
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:url("asserts/background.png") center / cover no-repeat;
+  filter:saturate(1.04) contrast(1.14) brightness(1.02);
+}
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,246,251,.42) 40%, rgba(255,255,255,.62)),
+    radial-gradient(circle at 15% 12%, rgba(23,52,95,.08), transparent 30%),
+    radial-gradient(circle at 86% 22%, rgba(15,143,139,.08), transparent 28%);
+}
+
+.page {
+  position:relative;
+  z-index:3;
+}
+
+.day-counter {
+  position:fixed;
+  top:22px;
+  right:28px;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  color:var(--wine);
+  text-align:left;
+  text-shadow:0 2px 12px rgba(255,255,255,.95);
+}
+.day-counter img {
+  width:38px;
+  height:38px;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 12px rgba(34,22,42,.14));
+}
+.day-counter strong {
+  display:block;
+  color:var(--wine);
+  font-size:1rem;
+  line-height:1.05;
+  font-weight:800;
+}
+.day-counter em {
+  display:block;
+  margin-top:3px;
+  color:var(--navy);
+  font-style:normal;
+  font-size:.78rem;
+  line-height:1.15;
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
+}
+
+.hero {
+  min-height:92svh;
+  display:grid;
+  place-items:center;
+  padding:118px 22px 52px;
+  text-align:center;
+}
+.hero-inner {
+  width:min(760px, 100%);
+  margin-inline:auto;
+}
+h1 {
+  margin:0;
+  color:#d71920;
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  font-size:clamp(2.6rem, 6.4vw, 4.6rem);
+  line-height:1.05;
+  font-weight:700;
+  letter-spacing:0;
+  text-shadow:0 5px 0 #123c8c, 0 12px 28px rgba(255,255,255,.9);
+}
+.hero p {
+  max-width:590px;
+  margin:14px auto 0;
+  color:#17345f;
+  font-size:clamp(.98rem, 1.8vw, 1.16rem);
+  line-height:1.65;
+  font-weight:600;
+}
+
+
+.section {
+  width:min(1020px, calc(100% - 34px));
+  margin:0 auto;
+  padding:42px 0;
+}
+.section-head {
+  text-align:center;
+  margin:0 auto 24px;
+  max-width:780px;
+}
+.kicker {
+  margin:0 0 8px;
+  color:var(--teal);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+h2 {
+  margin:0;
+  color:var(--navy);
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  font-size:clamp(1.8rem, 4vw, 3.1rem);
+  line-height:1.12;
+  letter-spacing:0;
+}
+.section-head p {
+  margin:12px auto 0;
+  color:var(--soft-ink);
+  font-size:1rem;
+  line-height:1.7;
+  font-weight:600;
+}
+
+.letter-wrap {
+  display:grid;
+  grid-template-columns:minmax(0, 1.08fr) minmax(250px, .72fr);
+  gap:24px;
+  align-items:stretch;
+}
+.letter-paper {
+  border:1px solid rgba(143,23,61,.14);
+  border-radius:8px;
+  padding:clamp(22px, 4vw, 40px);
+  background:var(--paper-strong);
+  box-shadow:0 24px 64px rgba(34,22,42,.13);
+}
+.letter-paper h3 {
+  margin:0 0 18px;
+  color:#bb1f32;
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  font-size:clamp(1.5rem, 3vw, 2.25rem);
+  line-height:1.18;
+  text-shadow:0 2px 0 rgba(18,60,140,.34), 0 10px 22px rgba(255,255,255,.86);
+}
+.letter-paper p {
+  margin:0 0 16px;
+  color:var(--ink);
+  font-size:1rem;
+  line-height:1.84;
+  font-weight:500;
+}
+.letter-paper p:last-child { margin-bottom:0; }
+.letter-photo {
+  overflow:hidden;
+  border:1px solid rgba(23,52,95,.14);
+  border-radius:8px;
+  background:var(--paper);
+  box-shadow:0 22px 54px rgba(34,22,42,.13);
+}
+.letter-photo button,
+.photo-card button {
+  width:100%;
+  height:100%;
+  padding:0;
+  border:0;
+  display:block;
+  background:transparent;
+  cursor:pointer;
+}
+.letter-photo img,
+.photo-card img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .55s ease, filter .55s ease;
+}
+.letter-photo:hover img,
+.photo-card:hover img {
+  transform:scale(1.035);
+  filter:saturate(1.07) contrast(1.03);
+}
+
+.promise-grid {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+.promise {
+  min-height:146px;
+  border:1px solid rgba(23,52,95,.12);
+  border-radius:8px;
+  padding:18px;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 18px 42px rgba(34,22,42,.1);
+}
+.promise b {
+  display:block;
+  margin-bottom:8px;
+  color:var(--wine);
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  font-size:1.15rem;
+}
+.promise p {
+  margin:0;
+  color:var(--soft-ink);
+  line-height:1.65;
+  font-size:.95rem;
+  font-weight:600;
+}
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+}
+.photo-card {
+  overflow:hidden;
+  aspect-ratio:1;
+  border:5px solid rgba(255,255,255,.9);
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 18px 48px rgba(34,22,42,.14);
+}
+
+.media-grid {
+  display:grid;
+  grid-template-columns:minmax(0, .86fr) minmax(0, 1.14fr);
+  gap:18px;
+  align-items:stretch;
+}
+.media-panel {
+  border:1px solid rgba(143,23,61,.14);
+  border-radius:8px;
+  padding:18px;
+  background:rgba(255,255,255,.88);
+  box-shadow:0 22px 54px rgba(34,22,42,.12);
+}
+.media-panel h3 {
+  margin:0 0 12px;
+  color:var(--navy);
+  font-family:"Segoe Script", "Brush Script MT", cursive;
+  font-size:1.35rem;
+}
+.song-stack {
+  display:grid;
+  gap:12px;
+}
+.song {
+  padding:13px;
+  border:1px solid rgba(23,52,95,.12);
+  border-radius:8px;
+  background:rgba(255,250,252,.92);
+}
+.song b {
+  display:block;
+  margin-bottom:9px;
+  color:var(--wine);
+  font-size:.92rem;
+}
+audio {
+  width:100%;
+  height:40px;
+}
+video {
+  width:100%;
+  display:block;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  border-radius:8px;
+  background:#17131b;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+.ending {
+  width:min(850px, calc(100% - 34px));
+  margin:0 auto 88px;
+  position:relative;
+  overflow:visible;
+  padding:42px clamp(20px, 20vw, 220px) 48px clamp(20px, 5vw, 54px);
+  border:1px solid rgba(15,143,139,.16);
+  border-radius:8px;
+  text-align:center;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 24px 64px rgba(34,22,42,.14);
+}
+.ending h2 { color:var(--wine); }
+.ending p {
+  margin:14px auto 0;
+  max-width:680px;
+  color:var(--soft-ink);
+  font-size:1.02rem;
+  line-height:1.76;
+  font-weight:600;
+}
+.ending strong { color:var(--navy); }
+
+.ending-photo {
+  position:absolute;
+  right:clamp(-106px, -7vw, -58px);
+  bottom:-22px;
+  width:clamp(150px, 18vw, 230px);
+  height:auto;
+  object-fit:contain;
+  opacity:1;
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 18px 24px rgba(34,22,42,.18));
+  pointer-events:none;
+}
+
+.love-footer {
+  width:min(760px, calc(100% - 34px));
+  margin:-44px auto 72px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  color:var(--wine);
+  font-size:clamp(1.7rem, 4vw, 3rem);
+  font-weight:800;
+  text-align:center;
+  text-shadow:0 8px 24px rgba(255,255,255,.95);
+}
+.love-footer img {
+  width:clamp(42px, 8vw, 76px);
+  height:clamp(42px, 8vw, 76px);
+  object-fit:contain;
+  filter:drop-shadow(0 10px 18px rgba(143,23,61,.2));
+}
+
+.icon-rain-layer {
+  position:fixed;
+  inset:0;
+  z-index:80;
+  pointer-events:none;
+  overflow:hidden;
+}
+.rain-icon {
+  position:absolute;
+  top:-76px;
+  left:50%;
+  width:var(--size, 34px);
+  height:var(--size, 34px);
+  object-fit:contain;
+  opacity:.98;
+  transform:translate3d(0, -80px, 0) rotate(0deg) scale(.9);
+  filter:drop-shadow(0 10px 14px rgba(143,23,61,.2));
+  will-change:transform, opacity;
+  animation:iconRainFall var(--duration, 3s) cubic-bezier(.19,.79,.3,1) forwards;
+}
+.rain-icon.is-heart {
+  filter:drop-shadow(0 12px 16px rgba(197,60,103,.24));
+}
+.rain-icon.is-web {
+  filter:drop-shadow(0 10px 14px rgba(23,52,95,.18));
+}
+@keyframes iconRainFall {
+  0% {
+    opacity:.98;
+    transform:translate3d(0, -86px, 0) rotate(0deg) scale(.72);
+  }
+  72% { opacity:.98; }
+  100% {
+    opacity:0;
+    transform:translate3d(var(--drift, 0px), calc(100vh + 150px), 0) rotate(var(--spin, 360deg)) scale(1.08);
+  }
+}
+
+
+@media (max-width:1080px) {
+  .ending {
+    padding:38px clamp(20px, 5vw, 54px) 34px;
+  }
+  .ending-photo {
+    position:static;
+    display:block;
+    width:min(210px, 48vw);
+    margin:24px auto -8px;
+  }
+}
+
+@media (max-width:860px) {
+  .day-counter {
+    top:14px;
+    right:12px;
+    gap:5px;
+    padding:0;
+  }
+  .day-counter img {
+    width:30px;
+    height:30px;
+  }
+  .day-counter strong { font-size:.84rem; }
+  .day-counter em { font-size:.66rem; }
+  .hero {
+    min-height:94svh;
+    padding:148px 18px 72px;
+  }
+  .ending {
+    margin-bottom:58px;
+    padding:30px 18px 28px;
+  }
+  .ending h2 {
+    font-size:clamp(1.7rem, 10vw, 2.7rem);
+    line-height:1.12;
+  }
+  .ending p {
+    font-size:.95rem;
+    line-height:1.68;
+  }
+  .ending-photo {
+    position:static;
+    display:block;
+    width:min(178px, 62vw);
+    margin:22px auto -4px;
+  }
+  .love-footer {
+    margin-top:-34px;
+    gap:10px;
+    font-size:clamp(1.35rem, 8vw, 1.8rem);
+    white-space:nowrap;
+  }
+  .love-footer img {
+    width:46px;
+    height:46px;
+  }
+  .letter-wrap,
+  .media-grid {
+    grid-template-columns:1fr;
+  }
+  .promise-grid,
+  .gallery {
+    grid-template-columns:1fr;
+  }
+  .photo-card {
+    max-width:340px;
+    width:100%;
+    margin-inline:auto;
+    aspect-ratio:4/5;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+<body>
+<aside class="day-counter" aria-label="Talking time counter">
+  <img src="asserts/1986_SpiderMan.png" alt="Spider-Man symbol">
+  <span>
+    <strong><span id="inclusiveDays">150</span> days</strong>
+    <em id="liveSince">loading...</em>
+  </span>
+</aside>
+
+<main class="page" aria-label="Madhurya and Tarun page">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Mrs.Tarun</h1>
+      <p>You are my MJ, my safe place after every battle, and the one heart my web always finds its way back to.</p>
+    </div>
+  </section>
+
+  <section class="section" id="letter">
+    <div class="section-head">
+      <p class="kicker">A letter for you</p>
+      <h2>Our Spider-Man and MJ kind of forever</h2>
+      <p>Not copied from a movie, not borrowed from a scene. This is ours.</p>
+    </div>
+
+    <div class="letter-wrap">
+      <article class="letter-paper">
+        <h3>Dear Madhurya,</h3>
+        <p>I do not know the exact second when you became this special to me. Maybe it was hidden inside one normal conversation, maybe inside one smile, maybe inside the way your name started feeling peaceful whenever it came on my screen.</p>
+        <p>Since March 19 at 8:27 PM, the days have been collecting quietly. One message became two, a small talk became a habit, and slowly you became the person I wanted to tell everything to. You made ordinary time feel like it had music in it.</p>
+        <p>If we were our own Spider-Man and MJ story, I would not ask for the dramatic rescue or the perfect movie scene. I would ask for the small things: walking beside you, teasing you, protecting your smile, choosing you on tired days, and still finding reasons to laugh together.</p>
+        <p>You are not just someone I love. You are the softness I want to come home to, the future I want to build with both hands, and the one person I want to impress again and again, even with a tiny webpage like this.</p>
+        <p>So this page is my little promise: every day, every hour, every minute, every second that runs on this counter is another quiet way of saying I am happy it is you.</p>
+      </article>
+
+      <figure class="letter-photo">
+        <button class="romance-trigger" type="button" aria-label="Play a romantic web moment">
+          <img src="asserts/mrs-tarun-mj-letter.png" alt="Madhurya and Tarun letter artwork">
+        </button>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">What I choose</p>
+      <h2>Small promises, every day</h2>
+    </div>
+    <div class="promise-grid">
+      <article class="promise">
+        <b>Your smile</b>
+        <p>I want to be one of the reasons it stays, even on days that feel heavy.</p>
+      </article>
+      <article class="promise">
+        <b>Your peace</b>
+        <p>I want love with patience, respect, comfort, and the kind of care that feels safe.</p>
+      </article>
+      <article class="promise">
+        <b>Our future</b>
+        <p>I want the beautiful ending, but more than that, I want every ordinary page before it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">Memories</p>
+      <h2>Tap a memory and let the web-points fall</h2>
+    </div>
+    <div class="gallery">
+      <figure class="photo-card">
+        <button class="romance-trigger" type="button" aria-label="Play a romantic web moment">
+          <img src="asserts/ChatGPT Image Aug 2, 2026, 03_03_48 PM.png" alt="Romantic memory artwork">
+        </button>
+      </figure>
+      <figure class="photo-card">
+        <button class="romance-trigger" type="button" aria-label="Play a romantic web moment">
+          <img src="asserts/ChatGPT Image Aug 2, 2026, 03_07_43 PM.png" alt="Romantic memory artwork">
+        </button>
+      </figure>
+      <figure class="photo-card">
+        <button class="romance-trigger" type="button" aria-label="Play a romantic web moment">
+          <img src="asserts/ChatGPT Image Aug 2, 2026, 03_41_56 PM.png" alt="Romantic memory artwork">
+        </button>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <p class="kicker">Spider-Verse playlist</p>
+      <h2>Our soundtrack across the skyline</h2>
+    </div>
+    <div class="media-grid">
+      <article class="media-panel">
+        <h3>Two web-swing songs</h3>
+        <div class="song-stack">
+          <div class="song">
+            <b>Tarun and Madhurya</b>
+            <audio controls preload="metadata" src="asserts/tarun&madhurya.mp3"></audio>
+          </div>
+          <div class="song">
+            <b>Mrs. Tarun</b>
+            <audio controls preload="metadata" src="asserts/mrs Tarun.mp3"></audio>
+          </div>
+        </div>
+      </article>
+
+      <article class="media-panel">
+        <h3>One rooftop memory</h3>
+        <video controls preload="metadata" poster="asserts/video-poster-1s.png">
+          <source src="asserts/TarunMadhurya.mp4" type="video/mp4">
+        </video>
+      </article>
+    </div>
+  </section>
+
+  <section class="ending">
+    <p class="kicker">Final rooftop promise</p>
+    <h2>Every great swing ends with you beside me.</h2>
+    <p>Madhurya, no matter how many days pass, I want the meaning to stay the same: <strong>I choose you, I adore you, and I cannot wait to make every next chapter more beautiful than this page.</strong></p>
+    <img class="ending-photo" src="asserts/smallIcon-transparent.png" alt="Tarun and Madhurya inside a heart">
+  </section>
+
+  <footer class="love-footer" aria-label="Tarun love Madhurya">
+    <span>Tarun</span>
+    <img src="asserts/love-symbol.png" alt="love symbol">
+    <span>Madhurya</span>
+  </footer>
+</main>
+
+<script>
+(function initTalkingCounter() {
+  const inclusiveDaysEl = document.getElementById("inclusiveDays");
+  const liveSinceEl = document.getElementById("liveSince");
+  const start = new Date(2026, 2, 19, 20, 27, 0);
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  function pad(value) {
+    return String(value).padStart(2, "0");
+  }
+
+  function updateCounter() {
+    const now = new Date();
+    const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const inclusiveDays = Math.max(1, Math.floor((today - startDay) / oneDay) + 1);
+    const elapsed = Math.max(0, now - start);
+    const elapsedDays = Math.floor(elapsed / oneDay);
+    const hours = Math.floor((elapsed % oneDay) / (60 * 60 * 1000));
+    const minutes = Math.floor((elapsed % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((elapsed % (60 * 1000)) / 1000);
+
+    inclusiveDaysEl.textContent = inclusiveDays;
+    liveSinceEl.textContent = `${elapsedDays}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+  }
+
+  updateCounter();
+  setInterval(updateCounter, 1000);
+})();
+
+(function initRomanticWebClicks() {
+  const icons = [
+    { src: "asserts/spider-web-cursor.png", className: "is-web" },
+    { src: "asserts/hearts.png", className: "is-heart" }
+  ];
+
+  function startIconRain() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const layer = document.createElement("span");
+    const count = 30;
+    layer.className = "icon-rain-layer";
+    document.body.appendChild(layer);
+
+    for (let i = 0; i < count; i += 1) {
+      const icon = icons[i % icons.length];
+      const img = document.createElement("img");
+      const size = 22 + Math.random() * (window.innerWidth < 700 ? 24 : 34);
+      const delay = Math.random() * .65;
+      const duration = 3.75 + Math.random() * .55;
+      const drift = (Math.random() - .5) * (window.innerWidth < 700 ? 96 : 190);
+      const spin = (Math.random() > .5 ? 1 : -1) * (220 + Math.random() * 420);
+
+      img.className = `rain-icon ${icon.className}`;
+      img.src = icon.src;
+      img.alt = "";
+      img.style.left = `${Math.random() * 100}vw`;
+      img.style.setProperty("--size", `${size}px`);
+      img.style.setProperty("--drift", `${drift}px`);
+      img.style.setProperty("--spin", `${spin}deg`);
+      img.style.setProperty("--duration", `${duration}s`);
+      img.style.animationDelay = `${delay}s`;
+      layer.appendChild(img);
+    }
+
+    setTimeout(() => layer.remove(), 4700);
+  }
+
+  document.querySelectorAll(".romance-trigger").forEach((button) => {
+    button.addEventListener("click", startIconRain);
+  });
+})();
+</script>
+</body>
+</html>
